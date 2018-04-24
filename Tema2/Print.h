@@ -19,5 +19,6 @@ public:
 		{
 			printf("\033[1;31m%c\033[0m", c);
 		}
+		return *this;
 	}
 };

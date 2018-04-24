@@ -1,3 +1,6 @@
+#ifndef _MAP_H
+#define _MAP_H
+
 #include <iostream>
 #include "Print.h"
 
@@ -9,6 +12,7 @@ public:
   Map(int width, int height);
   ~Map();
 
+  void Reset();
   void Display();
 
 
@@ -20,3 +24,5 @@ private:
   int _height;
 
 };
+
+#endif

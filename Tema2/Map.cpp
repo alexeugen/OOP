@@ -14,10 +14,6 @@ Map::Map(int width, int height)
     for(int j=0; j<_width; j++)
       _matrix[i][j] = '~';
 
-  _matrix[0][3] = '@';
-  _matrix[0][5] = '#';
-  _matrix[5][5] = '$';
-
 }
 
 Map::~Map()
@@ -25,6 +21,14 @@ Map::~Map()
   for (int i = 0; i < _height; i++)
     delete[] _matrix[i];
   delete[] _matrix;
+}
+
+
+void Map::Reset()
+{
+  for(int i=0; i<_height; i++)
+    for(int j=0; j<_width; j++)
+      _matrix[i][j] = '~';
 }
 
 void Map::Display()
