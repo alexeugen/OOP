@@ -8,9 +8,14 @@ using namespace std;
 
 class Map{
 public:
-  friend class Agent1;
+//  friend class Agent1;
   Map(int width, int height);
   ~Map();
+
+  void Set(int l, int c, char x);
+  char GetC(int l, int c);
+  int GetHeight();
+  int GetWidth();
 
   void Reset();
   void Display();

@@ -23,6 +23,24 @@ Map::~Map()
   delete[] _matrix;
 }
 
+void Map::Set(int l, int c, char x)
+{
+  _matrix[l][c] = x;
+}
+
+char Map::GetC(int l, int c)
+{
+  return _matrix[l][c];
+}
+
+int Map::GetHeight()
+{
+  return _height;
+}
+int Map::GetWidth()
+{
+  return _width;
+}
 
 void Map::Reset()
 {

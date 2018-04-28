@@ -11,6 +11,7 @@ Agent1::Agent1(Map *Map1, int poz_x, int poz_y)
   _Map1 = Map1;
   _poz_x = poz_x;
   _poz_y = poz_y;
+  _symbol = '@';
 }
 
 Agent1::~Agent1()
@@ -18,27 +19,15 @@ Agent1::~Agent1()
 
 }
 
-char* Agent1::Move()
+void Agent1::Move(int &l, int &c)
 {
-  if(_dead == false)
-  {
+
     _setAvailable();
 
-    _Map1->_matrix[_poz_x][_poz_y] = '@';
-    char* s = new char[30];
-    strcpy(s, my_itoa(_poz_x));
-    strcat(s, " ");
-    strcat(s, my_itoa(_poz_y));
-    return s;
-  }
-  return NULL;
+    l = _poz_x;
+    c = _poz_y;
 }
 
-
-void Agent1::Died()
-{
-  _dead = true;
-}
 
 /*********************** Private functions ************************/
 void Agent1::_setAvailable()
@@ -52,7 +41,7 @@ void Agent1::_setAvailable()
   for(int i = 0; i <= 3; i++)
   {
 
-      if(_avPos.p[v[i]].x < _Map1->_width && _avPos.p[v[i]].y < _Map1->_height && _avPos.p[v[i]].x >= 0 && _avPos.p[v[i]].y >= 0)
+      if(_avPos.p[v[i]].x < _Map1->GetWidth() && _avPos.p[v[i]].y < _Map1->GetHeight() && _avPos.p[v[i]].x >= 0 && _avPos.p[v[i]].y >= 0)
       {
         _poz_x = _avPos.p[v[i]].x;
         _poz_y = _avPos.p[v[i]].y;

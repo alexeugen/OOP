@@ -1,5 +1,10 @@
 #include "Agent.h"
 
+char Agent::GetSymbol()
+{
+  return _symbol;
+}
+
 void Agent::reverse(char str[], int length)
 {
     int start = 0;

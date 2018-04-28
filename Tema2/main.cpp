@@ -9,6 +9,7 @@ using namespace std;
 #include "Map.h"
 #include "Agent1.h"
 #include "Handler.h"
+#include "Log.h"
 
 int main()
 {
@@ -16,6 +17,9 @@ int main()
 
 	Handler Handler1("input.txt");
 
-	Handler1.Play(4);
+	Handler1.Play(1);
+//	Handler1.PlaySeq();  
+
+
 
 }
