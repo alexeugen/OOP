@@ -12,6 +12,8 @@
 #include "Agent3.h"
 #include "Item.h"
 #include "Item1.h"
+#include "Item2.h"
+#include "Item3.h"
 #include "Log.h"
 
 using namespace std;

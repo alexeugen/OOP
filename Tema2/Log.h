@@ -15,6 +15,8 @@ public:
   void AddMoved(char* i, char* l, char* c);
   void AddShielded(char* c);
   void AddBlocked(char* c);
+  void AddExtended(char *c);
+  void AddBrainy(char *c);
   void Print();
 
 private:

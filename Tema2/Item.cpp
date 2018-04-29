@@ -12,3 +12,7 @@ char Item::GetSymbol()
 {
   return _symbol;
 }
+char* Item::GetType()
+{
+  return _type;
+}

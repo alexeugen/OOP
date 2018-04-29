@@ -19,10 +19,14 @@ public:
   int CheckShield();
   void SetShield();
   void ClearShield();
-  void SetLevel(int i);
+  void SetExtended();
+
+  void SetBrainy();
+
 
 
 protected:
+  virtual void _getAvPosExtended(int poz_x, int poz_y) = 0;
   virtual void _getAvPos(int poz_x, int poz_y) = 0;   // calculeaza posibilele pozitii
   virtual void _setAvailable() = 0;  // alege pozitia
 
@@ -34,7 +38,8 @@ protected:
   Map *_Map1;
   int _poz_x;
   int _poz_y;
-  int _lvl;
+  int _extended;
+  int _brainy;
 
   struct poz{
     int x,y;

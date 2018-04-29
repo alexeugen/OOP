@@ -6,6 +6,7 @@ public:
   int GetLin();
   int GetCol();
   char GetSymbol();
+  char* GetType();
 
 protected:
   int _lin, _col;

@@ -87,6 +87,36 @@ void Log::AddBlocked(char *c)
   delete[] s;
 }
 
+void Log::AddExtended(char *c)
+{
+  char *s;
+  s = new char[100];
+  strcpy(s, "Agent ");
+  strcat(s, c);
+  strcat(s, " extended his moves");
+
+  _logs[_nrlogs] = new char[strlen(s) + 1];
+  strcpy(_logs[_nrlogs], s);
+  _nrlogs++;
+
+  delete[] s;
+}
+
+void Log::AddBrainy(char *c)
+{
+  char *s;
+  s = new char[100];
+  strcpy(s, "Agent ");
+  strcat(s, c);
+  strcat(s, " got brain");
+
+  _logs[_nrlogs] = new char[strlen(s) + 1];
+  strcpy(_logs[_nrlogs], s);
+  _nrlogs++;
+
+  delete[] s;
+}
+
 void Log::Print()
 {
   for(int i = 0; i< _nrlogs; i++)

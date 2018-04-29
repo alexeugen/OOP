@@ -21,6 +21,7 @@ public:
 
 protected:
   void _setAvailable() override;
+  void _getAvPosExtended(int poz_x, int poz_y) override;
   void _getAvPos(int poz_x, int poz_y) override;
 
 };

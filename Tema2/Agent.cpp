@@ -29,9 +29,13 @@ void Agent::ClearShield()
   _shield = 0;
 }
 
-void Agent::SetLevel(int i)
+void Agent::SetExtended()
 {
-  _lvl = i;
+  _extended = 1;
+}
+void Agent::SetBrainy()
+{
+  _brainy = 1;
 }
 
 void Agent::reverse(char str[], int length)

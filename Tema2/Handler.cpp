@@ -48,6 +48,11 @@ Handler::Handler(const char* file_name)
     fscanf(_in, "%s%d%d", s, &x, &y);
     if(!strcmp(s, "Shield"))
       _Items[i] = new Item1(x,y);
+    else if (!strcmp(s, "Extended"))
+      _Items[i] = new Item2(x,y);
+    else if (!strcmp(s, "Brainy"))
+      _Items[i] = new Item3(x,y);
+
     _Map1->Set(x, y, _Items[i]->GetSymbol());
   }
 
@@ -150,9 +155,21 @@ void Handler::PlaySeq()
         {
           if(moves[lin][col] >= 1001)    //Daca e un item
           {
-            _Agents[i]->SetShield();
-            Logs.AddShielded(my_itoa(i));
-
+            if(!strcmp("Extended", _Items[moves[lin][col]-1001]->GetType()))
+            {
+              _Agents[i]->SetExtended();
+              Logs.AddExtended(my_itoa(i));
+            }
+            else if(!strcmp("Shield", _Items[moves[lin][col]-1001]->GetType()))
+            {
+              _Agents[i]->SetShield();
+              Logs.AddShielded(my_itoa(i));
+            }
+            else if(!strcmp("Brainy", _Items[moves[lin][col]-1001]->GetType()))
+            {
+              _Agents[i]->SetBrainy();
+              Logs.AddBrainy(my_itoa(i));
+            }
             delete _Items[moves[lin][col]-1001];
             _Items[moves[lin][col]-1001] = NULL;
             moves[lin][col] = 0;

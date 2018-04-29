@@ -23,7 +23,13 @@ A2 4 4
 A2 5 5
 A2 6 6
 A2 7 7
-3
+9
 Shield 1 9
 Shield 2 8
 Shield 3 7
+Extended 9 1
+Extended 8 2
+Extended 7 3
+Brainy 14 1
+Brainy 14 2
+Brainy 14 3
