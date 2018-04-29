@@ -12,6 +12,7 @@ Agent2::Agent2(Map *Map1, int poz_x, int poz_y)
   _poz_x = poz_x;
   _poz_y = poz_y;
   _symbol = '#';
+  _shield = 0;
 }
 
 Agent2::~Agent2()

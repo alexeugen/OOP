@@ -14,6 +14,25 @@ int Agent::GetCol()
   return _poz_y;
 }
 
+int Agent::CheckShield()
+{
+  return _shield;
+}
+
+void Agent::SetShield()
+{
+  _shield = 1;
+}
+
+void Agent::ClearShield()
+{
+  _shield = 0;
+}
+
+void Agent::SetLevel(int i)
+{
+  _lvl = i;
+}
 
 void Agent::reverse(char str[], int length)
 {

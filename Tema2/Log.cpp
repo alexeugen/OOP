@@ -58,6 +58,35 @@ void Log::AddMoved(char *i, char* l, char* c)
     delete[] s;
 }
 
+void Log::AddShielded(char *c)
+{
+  char *s;
+  s = new char[100];
+  strcpy(s, "Agent ");
+  strcat(s, c);
+  strcat(s, " got a shield");
+
+  _logs[_nrlogs] = new char[strlen(s) + 1];
+  strcpy(_logs[_nrlogs], s);
+  _nrlogs++;
+
+  delete[] s;
+}
+void Log::AddBlocked(char *c)
+{
+  char *s;
+  s = new char[100];
+  strcpy(s, "Agent ");
+  strcat(s, c);
+  strcat(s, " blocked with shield");
+
+  _logs[_nrlogs] = new char[strlen(s) + 1];
+  strcpy(_logs[_nrlogs], s);
+  _nrlogs++;
+
+  delete[] s;
+}
+
 void Log::Print()
 {
   for(int i = 0; i< _nrlogs; i++)

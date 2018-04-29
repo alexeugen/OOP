@@ -10,6 +10,8 @@
 #include "Agent1.h"
 #include "Agent2.h"
 #include "Agent3.h"
+#include "Item.h"
+#include "Item1.h"
 #include "Log.h"
 
 using namespace std;
@@ -29,9 +31,11 @@ private:
 
   FILE *_in;
   Agent **_Agents;
+  Item **_Items;
   Map *_Map1;
   int _nrA1, _nrA2, _nrA3;
   int _nrA;
+  int _nrItems;
 };
 
 

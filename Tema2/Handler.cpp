@@ -7,7 +7,8 @@ Handler::Handler(const char* file_name)
   _in = fopen(file_name, "r");
   _Map1 = new Map(15, 15);
 
-  _Agents = (Agent**)malloc(sizeof(Agent*)*100);
+  _Agents = (Agent**)malloc(sizeof(Agent*) * 100);
+  _Items = (Item**)malloc(sizeof(Item*) * 100);
 
   fscanf(_in, "%d", &_nrA1);
   for(int i = 0; i < _nrA1; i++)
@@ -38,6 +39,18 @@ Handler::Handler(const char* file_name)
     _Agents[i] = new Agent3(_Map1,x,y);
     _Map1->Set(x, y, _Agents[i]->GetSymbol());
   }
+
+  fscanf(_in, "%d", &_nrItems);
+  for(int i = 0; i < _nrItems; i++)
+  {
+    char *s = new char[100];
+    int x, y;
+    fscanf(_in, "%s%d%d", s, &x, &y);
+    if(!strcmp(s, "Shield"))
+      _Items[i] = new Item1(x,y);
+    _Map1->Set(x, y, _Items[i]->GetSymbol());
+  }
+
 
   _nrA = _nrA1 + _nrA2 + _nrA3;
   _Map1->Display();
@@ -118,6 +131,14 @@ void Handler::PlaySeq()
 
     _Map1->Reset();
 
+    for(int i = 0; i < _nrItems; i++)
+    {
+      if(_Items[i] != NULL)
+        moves[_Items[i]->GetLin()][_Items[i]->GetCol()] = 1001 + i;
+    }
+
+
+
     for(int i = 0; i<_nrA; i++)
     {
       if(_Agents[i] != NULL)
@@ -125,12 +146,32 @@ void Handler::PlaySeq()
         int lin, col;
         moves[_Agents[i]->GetLin()][_Agents[i]->GetCol()] = 0;
         _Agents[i]->Move(lin, col);
-        if(moves[lin][col] != 0)           // Stergerea agentului care era acolo
+        if(moves[lin][col] != 0)           // Luarea unui shield sau stergerea agentului care era acolo
         {
-            delete  _Agents[moves[lin][col] - 1];
-            _Agents[moves[lin][col] - 1] = NULL;
+          if(moves[lin][col] >= 1001)    //Daca e un item
+          {
+            _Agents[i]->SetShield();
+            Logs.AddShielded(my_itoa(i));
 
-            Logs.AddDied(my_itoa(moves[lin][col]));
+            delete _Items[moves[lin][col]-1001];
+            _Items[moves[lin][col]-1001] = NULL;
+            moves[lin][col] = 0;
+          }
+          else                                 //Daca e un alt Agent
+          {
+            if(!_Agents[moves[lin][col] - 1]->CheckShield())
+            {
+              delete  _Agents[moves[lin][col] - 1];
+              _Agents[moves[lin][col] - 1] = NULL;
+              Logs.AddDied(my_itoa(moves[lin][col]-1));
+            }
+            else
+            {
+              Logs.AddBlocked(my_itoa(moves[lin][col]-1));
+              _Agents[moves[lin][col] - 1]->ClearShield();
+
+            }
+          }
         }
         Logs.AddMoved(my_itoa(i), my_itoa(lin), my_itoa(col));
 
@@ -140,6 +181,11 @@ void Handler::PlaySeq()
       }
     }
 
+    for(int i = 0; i < _nrItems; i++)
+    {
+      if(_Items[i] != NULL)
+      _Map1->Set(_Items[i]->GetLin(), _Items[i]->GetCol(), _Items[i]->GetSymbol());
+    }
 
 
     _Map1->Display();

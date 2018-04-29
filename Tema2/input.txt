@@ -23,3 +23,7 @@ A2 4 4
 A2 5 5
 A2 6 6
 A2 7 7
+3
+Shield 1 9
+Shield 2 8
+Shield 3 7

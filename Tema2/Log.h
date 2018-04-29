@@ -13,6 +13,8 @@ public:
   void Add(char *s);
   void AddDied(char* i);
   void AddMoved(char* i, char* l, char* c);
+  void AddShielded(char* c);
+  void AddBlocked(char* c);
   void Print();
 
 private:
