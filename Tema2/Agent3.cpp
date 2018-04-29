@@ -1,25 +1,25 @@
-#include "Agent2.h"
+#include "Agent3.h"
 
 
-Agent2::Agent2()
+Agent3::Agent3()
 {
 
 }
 
-Agent2::Agent2(Map *Map1, int poz_x, int poz_y)
+Agent3::Agent3(Map *Map1, int poz_x, int poz_y)
 {
   _Map1 = Map1;
   _poz_x = poz_x;
   _poz_y = poz_y;
-  _symbol = '#';
+  _symbol = '$';
 }
 
-Agent2::~Agent2()
+Agent3::~Agent3()
 {
 
 }
 
-void Agent2::Move(int &l, int &c)
+void Agent3::Move(int &l, int &c)
 {
 
     _setAvailable();
@@ -30,7 +30,7 @@ void Agent2::Move(int &l, int &c)
 
 
 /*********************** Private functions ************************/
-void Agent2::_setAvailable()
+void Agent3::_setAvailable()
 {
   int v[]={0,1,2,3};
   srand(clock());
@@ -51,14 +51,14 @@ void Agent2::_setAvailable()
   }
 }
 
-void Agent2::_getAvPos(int poz_x, int poz_y)
+void Agent3::_getAvPos(int poz_x, int poz_y)
 {
-  _avPos.p[0].x = poz_x + 1;
-  _avPos.p[0].y = poz_y;
-  _avPos.p[1].x = poz_x - 1;
-  _avPos.p[1].y = poz_y;
-  _avPos.p[2].x = poz_x;
+  _avPos.p[0].x = poz_x - 2;
+  _avPos.p[0].y = poz_y + 1;
+  _avPos.p[1].x = poz_x + 1;
+  _avPos.p[1].y = poz_y + 2;
+  _avPos.p[2].x = poz_x + 1;
   _avPos.p[2].y = poz_y - 1;
-  _avPos.p[3].x = poz_x;
-  _avPos.p[3].y = poz_y + 1;
+  _avPos.p[3].x = poz_x - 1;
+  _avPos.p[3].y = poz_y - 2;
 }

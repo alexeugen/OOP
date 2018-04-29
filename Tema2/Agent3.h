@@ -1,5 +1,5 @@
-#ifndef _AGENT2_H
-#define _AGENT2_H
+#ifndef _AGENT3_H
+#define _AGENT3_H
 
 #include <iostream>
 #include <cstdlib>
@@ -8,12 +8,12 @@
 #include "Agent.h"
 using namespace std;
 
-class Agent2 : public Agent{
+class Agent3 : public Agent{
 public:
-  Agent2();
-  Agent2(Map *Map1, int poz_x, int poz_y);
+  Agent3();
+  Agent3(Map *Map1, int poz_x, int poz_y);
 
-  ~Agent2();
+  ~Agent3();
 
   void Move(int &l, int &c) override;
 

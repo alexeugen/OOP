@@ -17,8 +17,8 @@ int main()
 
 	Handler Handler1("input.txt");
 
-	Handler1.Play(1);
-//	Handler1.PlaySeq();  
+//	Handler1.Play(1);
+	Handler1.PlaySeq();
 
 
 

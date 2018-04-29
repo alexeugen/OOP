@@ -8,6 +8,8 @@
 #include <thread>
 #include "Map.h"
 #include "Agent1.h"
+#include "Agent2.h"
+#include "Agent3.h"
 #include "Log.h"
 
 using namespace std;
@@ -29,6 +31,7 @@ private:
   Agent **_Agents;
   Map *_Map1;
   int _nrA1, _nrA2, _nrA3;
+  int _nrA;
 };
 
 

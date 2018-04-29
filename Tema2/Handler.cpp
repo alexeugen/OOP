@@ -7,9 +7,9 @@ Handler::Handler(const char* file_name)
   _in = fopen(file_name, "r");
   _Map1 = new Map(15, 15);
 
+  _Agents = (Agent**)malloc(sizeof(Agent*)*100);
 
   fscanf(_in, "%d", &_nrA1);
-  _Agents = (Agent**)malloc(sizeof(Agent*)*100);
   for(int i = 0; i < _nrA1; i++)
   {
     char *s = new char[100];
@@ -19,11 +19,28 @@ Handler::Handler(const char* file_name)
     _Map1->Set(x, y, _Agents[i]->GetSymbol());
   }
 
+  fscanf(_in, "%d", &_nrA2);
+  for(int i = _nrA1; i < _nrA1 + _nrA2; i++)
+  {
+    char *s = new char[100];
+    int x, y;
+    fscanf(_in, "%s%d%d", s, &x, &y);
+    _Agents[i] = new Agent2(_Map1,x,y);
+    _Map1->Set(x, y, _Agents[i]->GetSymbol());
+  }
 
+  fscanf(_in, "%d", &_nrA3);
+  for(int i = _nrA1 + _nrA2; i < _nrA1 + _nrA2 + _nrA3; i++)
+  {
+    char *s = new char[100];
+    int x, y;
+    fscanf(_in, "%s%d%d", s, &x, &y);
+    _Agents[i] = new Agent3(_Map1,x,y);
+    _Map1->Set(x, y, _Agents[i]->GetSymbol());
+  }
 
-
+  _nrA = _nrA1 + _nrA2 + _nrA3;
   _Map1->Display();
-
 }
 
 Handler::~Handler()
@@ -45,7 +62,7 @@ void Handler::Play(const int time_interval)
     printf("\033[2J");
 
     _Map1->Reset();
-    for(int i = 0; i<_nrA1; i++)
+    for(int i = 0; i<_nrA; i++)
     {
       if(_Agents[i] != NULL)
       {
@@ -102,7 +119,7 @@ void Handler::PlaySeq()
     printf("\033[2J");
 
     _Map1->Reset();
-    for(int i = 0; i<_nrA1; i++)
+    for(int i = 0; i<_nrA; i++)
     {
       if(_Agents[i] != NULL)
       {
