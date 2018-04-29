@@ -14,6 +14,8 @@ class Agent{
 public:
   virtual void Move(int &l, int &c) = 0;
   char GetSymbol();
+  int GetLin();
+  int GetCol();
 
 protected:
   virtual void _getAvPos(int poz_x, int poz_y) = 0;   // calculeaza posibilele pozitii

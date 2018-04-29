@@ -67,25 +67,23 @@ void Handler::Play(const int time_interval)
       if(_Agents[i] != NULL)
       {
         int lin, col;
+        moves[_Agents[i]->GetLin()][_Agents[i]->GetCol()] = 0;
         _Agents[i]->Move(lin, col);
         if(moves[lin][col])           // Stergerea agentului care era acolo
         {
-            delete  _Agents[moves[lin][col]];
-            _Agents[moves[lin][col]] = NULL;
+            delete  _Agents[moves[lin][col] - 1];
+            _Agents[moves[lin][col] - 1] = NULL;
 
-            Logs.AddDied(my_itoa(moves[lin][col]));
+            Logs.AddDied(my_itoa(moves[lin][col]-1));
         }
         Logs.AddMoved(my_itoa(i), my_itoa(lin), my_itoa(col));
 
         _Map1->Set(lin, col, _Agents[i]->GetSymbol());
 
-        moves[lin][col] = i;
+        moves[lin][col] = i + 1;
       }
     }
 
-    for(int i = 0; i<_Map1->GetHeight(); i++)
-      for(int j = 0; j<_Map1->GetWidth(); j++)
-        moves[i][j] = 0;
 
     _Map1->Display();
     Logs.Print();
@@ -119,16 +117,18 @@ void Handler::PlaySeq()
     printf("\033[2J");
 
     _Map1->Reset();
+
     for(int i = 0; i<_nrA; i++)
     {
       if(_Agents[i] != NULL)
       {
         int lin, col;
+        moves[_Agents[i]->GetLin()][_Agents[i]->GetCol()] = 0;
         _Agents[i]->Move(lin, col);
-        if(moves[lin][col])           // Stergerea agentului care era acolo
+        if(moves[lin][col] != 0)           // Stergerea agentului care era acolo
         {
-            delete  _Agents[moves[lin][col]];
-            _Agents[moves[lin][col]] = NULL;
+            delete  _Agents[moves[lin][col] - 1];
+            _Agents[moves[lin][col] - 1] = NULL;
 
             Logs.AddDied(my_itoa(moves[lin][col]));
         }
@@ -136,13 +136,11 @@ void Handler::PlaySeq()
 
         _Map1->Set(lin, col, _Agents[i]->GetSymbol());
 
-        moves[lin][col] = i;
+        moves[lin][col] = i + 1;
       }
     }
 
-    for(int i = 0; i<_Map1->GetHeight(); i++)
-      for(int j = 0; j<_Map1->GetWidth(); j++)
-        moves[i][j] = 0;
+
 
     _Map1->Display();
     Logs.Print();

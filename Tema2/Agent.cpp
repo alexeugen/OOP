@@ -5,6 +5,16 @@ char Agent::GetSymbol()
   return _symbol;
 }
 
+int Agent::GetLin()
+{
+  return _poz_x;
+}
+int Agent::GetCol()
+{
+  return _poz_y;
+}
+
+
 void Agent::reverse(char str[], int length)
 {
     int start = 0;
