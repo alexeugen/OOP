@@ -63,9 +63,20 @@ Handler::Handler(const char* file_name)
 
 Handler::~Handler()
 {
+  for(int i = 0; i < _nrA; i++)
+    delete _Agents[i];
+  delete[] _Agents;
 
+  for(int i = 0; i < _nrItems; i++)
+    delete _Items[i];
+  delete[] _Items;
+
+  delete _Map1;
 }
 
+
+/*** Play not finished* *******************************************/
+/*
 void Handler::Play(const int time_interval)
 {
   int **moves;             // matrice in care pun indicele agentului
@@ -117,7 +128,7 @@ void Handler::Play(const int time_interval)
     delete[] moves[i];
   delete[] moves;
 }
-
+*/
 
 void Handler::PlaySeq()
 {

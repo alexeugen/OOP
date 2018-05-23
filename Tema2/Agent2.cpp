@@ -6,11 +6,9 @@ Agent2::Agent2()
 
 }
 
-Agent2::Agent2(Map *Map1, int poz_x, int poz_y)
+Agent2::Agent2(Map *Map1, int poz_x, int poz_y)  : Agent(poz_x, poz_y)
 {
   _Map1 = Map1;
-  _poz_x = poz_x;
-  _poz_y = poz_y;
   _symbol = '#';
   _shield = 0;
   _extended = 0;

@@ -1,18 +1,16 @@
 #include "Agent.h"
 
-char Agent::GetSymbol()
+Agent::Agent()
 {
-  return _symbol;
+
 }
 
-int Agent::GetLin()
+Agent::Agent(int pozx, int pozy)
 {
-  return _poz_x;
+  _poz_x = pozx;
+  _poz_y = pozy;
 }
-int Agent::GetCol()
-{
-  return _poz_y;
-}
+
 
 int Agent::CheckShield()
 {

@@ -1,0 +1,9 @@
+﻿  interfata.cpp
+c:\users\user\desktop\tema alex poo\pizza_project\pizza_project\interfata.cpp(1): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  Meniu.cpp
+c:\users\user\desktop\tema alex poo\pizza_project\pizza_project\meniu.cpp(1): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  Pizza.cpp
+c:\users\user\desktop\tema alex poo\pizza_project\pizza_project\pizza.cpp(1): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  pizza_project.cpp
+c:\users\user\desktop\tema alex poo\pizza_project\pizza_project\pizza_project.cpp(12): warning C4930: 'Meniu m(void)': prototyped function not called (was a variable definition intended?)
+  Generating Code...

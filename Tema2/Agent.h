@@ -12,10 +12,12 @@ using namespace std;
 
 class Agent{
 public:
+  Agent();
+  Agent(int pozx, int pozy);
   virtual void Move(int &l, int &c) = 0;
-  char GetSymbol();
-  int GetLin();
-  int GetCol();
+  char GetSymbol() const {return _symbol;}
+  int GetLin() const {return _poz_x;}
+  int GetCol() const {return _poz_y;}
   int CheckShield();
   void SetShield();
   void ClearShield();
